@@ -1,4 +1,6 @@
-<%= link_to "Home", "/", method: :get %>
+<p><%= link_to "Home", "/", method: :get %></p>
+
+<h1>Create a New User</h1>
 
 <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -10,8 +12,6 @@
       </ul>
     </div>
   <% end %>
-
-<h1>Create a New User</h1>
 
 <%= form_with url: "/register", method: :post, local:true do |form| %>
   <%= form.label :name %>
