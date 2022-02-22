@@ -1,0 +1,25 @@
+<%= link_to "Home", "/", method: :get %>
+
+<h1>Create a New User</h1>
+
+<%= form_with url: "/register", method: :post, local:true do |form| %>
+  <%= form.label :name %>
+  <p><%= form.text_field :name %></p>
+
+  <%= form.label :email %>
+  <p><%= form.text_field :email %></p>
+
+  <%= form.label :password %>
+  <p><%= form.password_field :password %></p>
+
+  <%= form.label :password_confirmation %>
+  <p><%= form.text_field :password_confirmation %></p>
+
+  <%= form.label :description %>
+  <p><%= form.text_field :description %></p>
+
+  <%= form.label :age %>
+  <p><%= form.text_field :age %></p>
+
+  <%= form.submit "Submit" %>
+<% end %>
