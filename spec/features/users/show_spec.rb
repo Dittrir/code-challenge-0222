@@ -13,11 +13,21 @@ RSpec.describe 'User Dashboard Page', type: :feature do
       click_button 'Log In'
     end
 
-    it 'has a title and links to log out and return to home' do
+    it 'has a title and links to return to home' do
+      expect(page).to have_content("Welcome, David!")
+      expect(page).to have_content("David's Dashboard")
+
       click_link('Home')
 
       expect(current_path).to eq(root_path)
       expect(page).to have_link("Logout")
+    end
+
+    it 'has a link to log out' do
+      click_link('Logout')
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_link("Log In")
     end
   end
 end
