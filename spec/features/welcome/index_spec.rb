@@ -45,7 +45,7 @@ RSpec.describe 'Welcome Index Page', type: :feature do
 
       click_link 'Log In'
       expect(current_path).to eq("/login")
-      
+
       fill_in :email, with: 'david@email.com'
       fill_in :password, with: 'password12345'
 

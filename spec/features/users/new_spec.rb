@@ -11,9 +11,12 @@ RSpec.describe 'Register New User Page', type: :feature do
       fill_in :password_confirmation, with: 'password12345'
 
       click_button 'Submit'
+      new_user = User.last
+
+      visit dashboard_path
 
       expect(page).to have_content("Robin's Dashboard")
-      expect(current_path).to eq(dashboard_path(User.last))
+      expect(current_path).to eq(dashboard_path)
     end
 
     it 'sad path: doesnt allow user creation if fields are blank' do

@@ -1,3 +1,8 @@
-<%= link_to "Logout", "/logout", method: :delete %>
+<% if session[:user_id] %>
+  <%= link_to "Logout", "/logout", method: :delete %>
+<% else %>
+  <%= link_to "Log In", "/login", method: :get %>
+  <%= button_to "Register", "/register", method: :get %>
+<% end %>
 
 <h1> <%= @user.name %>'s Dashboard</h1>
