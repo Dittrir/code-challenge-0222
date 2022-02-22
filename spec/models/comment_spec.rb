@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe Post, type: :model do
+RSpec.describe Comment, type: :model do
   describe "relationships" do
     it { should belong_to :post }
-    it { should belong_to(:user).through(:post) }
+    it { should belong_to :user }
   end
 
   describe 'validations' do

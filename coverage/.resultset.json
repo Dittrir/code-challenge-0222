@@ -427,12 +427,10 @@
           null
         ]
       },
-      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/models/post.rb": {
+      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/models/comment.rb": {
         "lines": [
           1,
           1,
-          1,
-          null,
           1,
           null,
           1,
@@ -464,6 +462,19 @@
           1,
           null,
           1,
+          null
+        ]
+      },
+      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/models/post.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
           null
         ]
       },
@@ -579,19 +590,8 @@
           null,
           null
         ]
-      },
-      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/models/comment.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          0,
-          null,
-          null
-        ]
       }
     },
-    "timestamp": 1645562090
+    "timestamp": 1645563486
   }
 }
