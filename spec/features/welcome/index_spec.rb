@@ -26,19 +26,48 @@ RSpec.describe 'Welcome Index Page', type: :feature do
       expect(current_path).to eq(dashboard_path(User.last))
     end
 
-    it 'sad path: user attempts to log in with invalid username or password' do
+    it 'sad path: user attempts to log in with one field blank' do
       visit root_path
 
       click_link 'Log In'
       expect(current_path).to eq("/login")
 
-      fill_in :email, with: 'robin'
       fill_in :password, with: 'password12345'
 
       click_button 'Log In'
 
       expect(current_path).to eq("/login")
       expect(page).to have_content("User does not exist. Please try again.")
+    end
+
+    it 'sad path: user attempts to log in with no existing user' do
+      visit root_path
+
+      click_link 'Log In'
+      expect(current_path).to eq("/login")
+      
+      fill_in :email, with: 'david@email.com'
+      fill_in :password, with: 'password12345'
+
+      click_button 'Log In'
+
+      expect(current_path).to eq("/login")
+      expect(page).to have_content("User does not exist. Please try again.")
+    end
+
+    it 'sad path: user attempts to log in with invalid username or password' do
+      user_1 = User.create!(name: "David", email: "david@email.com", password: 'password123', password_confirmation: 'password123')
+
+      visit root_path
+
+      click_link 'Log In'
+      expect(current_path).to eq("/login")
+
+      fill_in :email, with: 'david@email.com'
+      click_button 'Log In'
+
+      expect(current_path).to eq("/login")
+      expect(page).to have_content("Email or password is incorrect. Please try again.")
     end
   end
 end
