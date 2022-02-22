@@ -25,7 +25,7 @@ This mini project models a barebones User Interface. Users can register and then
 ## Local Setup
 1. Fork and Clone the repo 
 ```shell
-$ it clone git@github.com:Dittrir/code-challenge-0222.git
+$ git clone git@github.com:Dittrir/code-challenge-0222.git
 ```
 2.  Navigate to directory 
 ```shell
