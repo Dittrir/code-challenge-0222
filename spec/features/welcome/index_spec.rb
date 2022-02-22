@@ -15,6 +15,7 @@ RSpec.describe 'Welcome Index Page', type: :feature do
       click_button 'Submit'
 
       expect(page).to have_content("Robin's Dashboard")
+      expect(current_path).to eq(dashboard_path(User.last))
     end
   end
 end
