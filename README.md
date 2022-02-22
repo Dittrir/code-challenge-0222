@@ -20,7 +20,7 @@ This mini project models a barebones User Interface. Users can register and then
 - Deploy project to Heroku
 
 ## Schema
-![Screen Shot 2022-02-22 at 9 05 44 AM](https://user-images.githubusercontent.com/89048720/155182044-d055520e-0bcb-46bb-b0d6-daf254d43734.png)
+![Screen Shot 2022-02-22 at 9 32 57 AM](https://user-images.githubusercontent.com/89048720/155186678-a42cc781-ef73-493e-835b-ce83af35efc5.png)
 
 ## Local Setup
 1. Fork and Clone the repo 
