@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/spec/features/welcome/index_spec.rb": {
+      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/spec/features/users/index_spec.rb": {
         "lines": [
           1,
           null,
@@ -11,24 +11,18 @@
           1,
           null,
           1,
-          1,
-          1,
+          null,
+          0,
+          0,
+          null,
+          0,
           null,
           null,
           1,
-          1,
+          0,
           null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
+          0,
+          0,
           null,
           null,
           null
@@ -395,12 +389,47 @@
           null,
           1,
           1,
+          1,
+          1,
           null
         ]
       },
       "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          null
+        ]
+      },
+      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/spec/features/welcome/index_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -541,25 +570,6 @@
           null
         ]
       },
-      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/controllers/welcome_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
       "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/controllers/users_controller.rb": {
         "lines": [
           1,
@@ -570,6 +580,7 @@
           1,
           null,
           null,
+          1,
           1,
           null,
           null,
@@ -586,12 +597,31 @@
           1,
           null,
           1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/robindittrich/turing/3module/jobs/code-challenge-0222/app/controllers/welcome_controller.rb": {
+        "lines": [
+          1,
           1,
           null,
           null
         ]
       }
     },
-    "timestamp": 1645563486
+    "timestamp": 1645565039
   }
 }
