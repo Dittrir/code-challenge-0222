@@ -1,5 +1,16 @@
 <%= link_to "Home", "/", method: :get %>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved: </p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <h1>Create a New User</h1>
 
 <%= form_with url: "/register", method: :post, local:true do |form| %>
