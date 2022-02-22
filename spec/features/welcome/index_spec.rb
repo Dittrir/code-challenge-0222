@@ -25,5 +25,20 @@ RSpec.describe 'Welcome Index Page', type: :feature do
       expect(page).to have_content("Robin's Dashboard")
       expect(current_path).to eq(dashboard_path(User.last))
     end
+
+    it 'sad path: user attempts to log in with invalid username or password' do
+      visit root_path
+
+      click_link 'Log In'
+      expect(current_path).to eq("/login")
+
+      fill_in :email, with: 'robin'
+      fill_in :password, with: 'password12345'
+
+      click_button 'Log In'
+
+      expect(current_path).to eq("/login")
+      expect(page).to have_content("User does not exist. Please try again.")
+    end
   end
 end
