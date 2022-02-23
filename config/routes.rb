@@ -9,12 +9,10 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
 
-  # resources :posts, only: [:new, :show] do
-  #   resources :comments, only: [:new, :show]
-  # end
   get '/posts/new', to: 'posts#new'
   post '/posts', to: 'posts#create'
   get '/posts/:id', to: 'posts#show'
+  delete '/posts/:id', to: 'posts#destroy'
 
   get '/posts/:id/comments/new', to: 'comments#new'
   post '/posts/:id/comments', to: 'comments#create'

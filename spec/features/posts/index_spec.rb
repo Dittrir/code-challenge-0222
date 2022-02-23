@@ -165,5 +165,17 @@ RSpec.describe 'Homepage', type: :feature do
 
       expect(current_path).to eq(dashboard_path)
     end
+
+    it 'user can destroy their own posts' do
+      post = create(:post, user_id: @user_1.id)
+      visit root_path
+
+      within("#post-#{post.id}") do
+        click_button 'Delete This Post'
+      end
+
+      expect(current_path).to eq(root_path)
+      expect(page).to_not have_content(post.title)
+    end
   end
 end
