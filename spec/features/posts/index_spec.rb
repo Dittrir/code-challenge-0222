@@ -157,5 +157,13 @@ RSpec.describe 'Homepage', type: :feature do
       expect(page).to have_content("Another day at the office!")
       expect(page).to have_content("Who is stoked for the weekend?")
     end
+
+    it 'allows user to return to their dashboard ' do
+      visit root_path
+
+      click_link 'My Dashboard'
+
+      expect(current_path).to eq(dashboard_path)
+    end
   end
 end
