@@ -1,0 +1,8 @@
+<h1>Create a New User</h1>
+
+<%= form_with url: "/posts/#{@post.id}/comments", method: :post, local:true do |form| %>
+  <%= form.label :body, "Comment Body:" %>
+  <p><%= form.text_field :body %></p>
+
+  <%= form.submit "Submit" %>
+<% end %>
