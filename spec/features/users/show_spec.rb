@@ -29,5 +29,12 @@ RSpec.describe 'User Dashboard Page', type: :feature do
       expect(current_path).to eq(root_path)
       expect(page).to have_link("Log In")
     end
+
+    it 'includes posts from that user' do
+      create(:post, user_id: @user_1.id, title: "Test Post")
+      visit dashboard_path
+
+      expect(page).to have_content("Test Post")
+    end
   end
 end
