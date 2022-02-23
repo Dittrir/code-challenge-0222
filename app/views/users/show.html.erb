@@ -4,4 +4,7 @@
 <% else %>
   <%= link_to "Logout", "/logout", method: :delete %>
   <h1> <%= @user.name %>'s Dashboard</h1>
+  <hr>
+  <p>About Me: <%= @user.description %></p>
+  <p>Age: <%= @user.age %></p>
 <% end %>

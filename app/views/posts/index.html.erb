@@ -20,8 +20,7 @@
     <p>Comments: </p>
     <section id="comment-<%= post.id %>">
       <% post.comments.each do |comment| %>
-        <p>Author: <%= comment.author(comment.user_id) %></p>
-        <p>Body: <%= comment.body %></p>
+        <p><%= comment.author(comment.user_id) %>: <%= comment.body %></p>
     <% end %>
     <%= button_to "Comment", "/posts/#{post.id}/comments/new", method: :get, params: {user_id: session[:user_id]} %>
     <hr><hr>

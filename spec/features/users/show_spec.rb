@@ -29,5 +29,11 @@ RSpec.describe 'User Dashboard Page', type: :feature do
       expect(current_path).to eq(root_path)
       expect(page).to have_link("Log In")
     end
+
+    it 'has users information' do
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("About me:")
+      expect(page).to have_content("Age:")
+    end
   end
 end
