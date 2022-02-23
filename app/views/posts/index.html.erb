@@ -10,17 +10,20 @@
   <h1>Here are the posts!</h1>
   <hr><hr>
   <% @posts.each do |post| %>
-    <p>Title: <%= post.title %></p>
-    <p>Body: <%= post.body %></p>
-    <hr>
+    <section id="post-<%= post.id %>">
+      <%= link_to "Post #: #{post.id}", "/posts/#{post.id}" %>
+      <p>Title: <%= post.title %></p>
+      <p>Body: <%= post.body %></p>
+      <hr>
+    </section>
     <p>Comments: </p>
-    <section id="comment-<%=post.id%>">
+    <section id="comment-<%= post.id %>">
       <% post.comments.each do |comment| %>
         <p>Author: <%= comment.author(comment.user_id) %></p>
         <p>Body: <%= comment.body %></p>
         <hr><hr>
     <% end %>
-    <%= link_to "Comment", "posts/#{post.id}/comments/new", params: {user_id: session[:user_id]} %>
+    <%= link_to "Comment", "/posts/#{post.id}/comments/new", params: {user_id: session[:user_id]} %>
   </section>
   <% end %>
 <% end %>
