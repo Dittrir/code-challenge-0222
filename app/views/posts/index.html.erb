@@ -12,6 +12,7 @@
   <% @posts.each do |post| %>
     <section id="post-<%= post.id %>">
       <%= link_to "Post #: #{post.id}", "/posts/#{post.id}" %>
+      <p>Author: <%= post.author(post.user_id) %></p>
       <p>Title: <%= post.title %></p>
       <p>Body: <%= post.body %></p>
       <hr>

@@ -6,4 +6,8 @@ class Post < ApplicationRecord
             :presence => {message: "can't be blank"}
   validates :body,
             :presence => {message: "can't be blank"}
+            
+  def author(id)
+    User.find(id).name
+  end
 end
