@@ -36,5 +36,13 @@ RSpec.describe 'User Dashboard Page', type: :feature do
 
       expect(page).to have_content("Test Post")
     end
+
+    it 'includes comments for each post' do
+      post = create(:post, user_id: @user_1.id, title: "Test Post")
+      comment = create(:comment, post_id: @post.id, body: "Test Comment")
+      visit dashboard_path
+
+      expect(page).to have_content("Test Comment")
+    end
   end
 end
