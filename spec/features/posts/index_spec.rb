@@ -177,5 +177,14 @@ RSpec.describe 'Homepage', type: :feature do
       expect(current_path).to eq(root_path)
       expect(page).to_not have_content(post.title)
     end
+
+    it 'does not allow user to delete other users posts' do
+      post = create(:post, user_id: @user_2.id)
+      visit root_path
+
+      within("#post-#{post.id}") do
+        expect(page).to_not have_button("Delete This Post")
+      end
+    end
   end
 end
