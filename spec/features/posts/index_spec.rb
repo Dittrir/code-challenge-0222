@@ -105,11 +105,15 @@ RSpec.describe 'Homepage', type: :feature do
     it 'allows a user to comment on a post' do
       post = create(:post, user_id: @user_1.id)
       visit root_path
+
       within("#comment-#{post.id}") do
-        fill_in(:comment, with: 'Hey thats a great idea!')
-        click_button("Comment")
+        click_link 'Comment'
+        expect(current_path).to eq("/posts/#{post.id}/comments/new")
       end
-      expect(current_path).to eq(root_path)
+      
+      fill_in :body, with: "Hey thats a great idea!"
+      click_button 'Submit'
+
       expect(page).to have_content("Hey thats a great idea!")
     end
   end
