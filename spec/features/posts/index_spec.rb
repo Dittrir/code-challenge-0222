@@ -111,7 +111,7 @@ RSpec.describe 'Homepage', type: :feature do
       visit root_path
 
       within("#comment-#{post.id}") do
-        click_link 'Comment'
+        click_button 'Comment'
         expect(current_path).to eq("/posts/#{post.id}/comments/new")
       end
 
@@ -128,6 +128,20 @@ RSpec.describe 'Homepage', type: :feature do
 
       expect(page).to_not have_content("Here are the posts!")
       expect(page).to_not have_content(post.title)
+    end
+
+    it 'allows users to create new posts' do
+      visit root_path
+
+      click_button 'Create a New Post'
+
+      fill_in :title, with: 'Another day at the office!'
+      fill_in :body, with: 'Who is stoked for the weekend?'
+      click_button 'Post'
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("Another day at the office!")
+      expect(page).to have_content("Who is stoked for the weekend?")
     end
   end
 end
