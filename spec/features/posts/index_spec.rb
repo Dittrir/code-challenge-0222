@@ -87,11 +87,15 @@ RSpec.describe 'Homepage', type: :feature do
       expect(page).to have_content("Email or password is incorrect. Please try again.")
     end
 
-    it 'includes posts from that user' do
-      create(:post, user_id: @user_1.id, title: "Test Post")
+    it 'includes posts' do
+      post = create(:post, user_id: @user_1.id, title: "Test Post")
       visit root_path
 
-      expect(page).to have_content("Test Post")
+      within("#post-#{post.id}") do
+        expect(page).to have_content("Author: David")
+        expect(page).to have_content("Title: Test Post")
+        expect(page).to have_content("Body: #{post.body}")
+      end
     end
 
     it 'includes comments for each post' do
@@ -110,11 +114,20 @@ RSpec.describe 'Homepage', type: :feature do
         click_link 'Comment'
         expect(current_path).to eq("/posts/#{post.id}/comments/new")
       end
-      
+
       fill_in :body, with: "Hey thats a great idea!"
       click_button 'Submit'
 
       expect(page).to have_content("Hey thats a great idea!")
+    end
+
+    it 'sad path: user cant see posts unless logged in' do
+      click_link "Logout"
+      post = create(:post, user_id: @user_1.id)
+      visit root_path
+
+      expect(page).to_not have_content("Here are the posts!")
+      expect(page).to_not have_content(post.title)
     end
   end
 end
