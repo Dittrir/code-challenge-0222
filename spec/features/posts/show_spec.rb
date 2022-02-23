@@ -13,7 +13,7 @@ RSpec.describe 'Post Show Page', type: :feature do
       click_button 'Log In'
     end
 
-    it 'shows a post' do
+    it 'shows a post and its comments' do
       post = create(:post, user_id: @user_1.id)
       visit root_path
 
@@ -24,6 +24,7 @@ RSpec.describe 'Post Show Page', type: :feature do
 
       expect(page).to have_content("#{post.title}")
       expect(page).to have_content("#{post.body}")
+      expect(page).to have_content("Comments:")
     end
 
     it 'allows user to comment on a post' do
@@ -37,6 +38,14 @@ RSpec.describe 'Post Show Page', type: :feature do
       click_button 'Submit'
 
       expect(page).to have_content("Awesome!")
+
+      visit root_path
+
+      within("#post-#{post.id}") do
+        click_link "Post #: #{post.id}"
+        expect(current_path).to eq("/posts/#{post.id}")
+      end
+      expect(page).to have_content("David: Awesome!")
     end
   end
 end

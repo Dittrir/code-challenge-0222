@@ -157,5 +157,34 @@ RSpec.describe 'Homepage', type: :feature do
       expect(page).to have_content("Another day at the office!")
       expect(page).to have_content("Who is stoked for the weekend?")
     end
+
+    it 'allows user to return to their dashboard ' do
+      visit root_path
+
+      click_link 'My Dashboard'
+
+      expect(current_path).to eq(dashboard_path)
+    end
+
+    it 'user can destroy their own posts' do
+      post = create(:post, user_id: @user_1.id)
+      visit root_path
+
+      within("#post-#{post.id}") do
+        click_button 'Delete This Post'
+      end
+
+      expect(current_path).to eq(root_path)
+      expect(page).to_not have_content(post.title)
+    end
+
+    it 'does not allow user to delete other users posts' do
+      post = create(:post, user_id: @user_2.id)
+      visit root_path
+
+      within("#post-#{post.id}") do
+        expect(page).to_not have_button("Delete This Post")
+      end
+    end
   end
 end

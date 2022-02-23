@@ -6,11 +6,15 @@
   <p>Please Log in or register, by using one of the links above, to get started.</p>
 <% else %>
   <%= link_to "Logout", "/logout", method: :delete %>
+  <%= link_to "My Dashboard", dashboard_path %>
 
   <h1>Here are the posts!</h1>
   <hr><hr>
-  <% @posts.each do |post| %>
+  <% @posts.order_by_most_recent.each do |post| %>
     <section id="post-<%= post.id %>">
+      <% if post.user_id == session[:user_id] %>
+        <%= button_to "Delete This Post", "/posts/#{post.id}", method: :delete %>
+      <% end %>
       <%= link_to "Post #: #{post.id}", "/posts/#{post.id}" %>
       <p>Author: <%= post.author(post.user_id) %></p>
       <p>Title: <%= post.title %></p>

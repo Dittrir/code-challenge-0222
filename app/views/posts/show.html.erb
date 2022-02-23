@@ -3,7 +3,11 @@
   <%= link_to "Register", "/register", method: :get %>
 <% else %>
   <%= link_to "Logout", "/logout", method: :delete %>
-  <h1> <%= @post.title %></h1>
-  <p> <%= @post.body %> </p>
-    <%= link_to "Comment", "/posts/#{@post.id}/comments/new", params: {user_id: session[:user_id]} %>
+  <h1> Post Title: <%= @post.title %></h1>
+  <p> Post Body: <%= @post.body %> </p>
+  <p> Comments:</p>
+  <% @post.comments.each do |comment| %>
+    <p><%= comment.author(comment.user_id) %>: <%= comment.body %></p>
+  <% end %>
+  <%= link_to "Comment", "/posts/#{@post.id}/comments/new", params: {user_id: session[:user_id]} %>
 <% end %>
