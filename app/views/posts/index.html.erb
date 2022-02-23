@@ -12,15 +12,15 @@
   <% @posts.each do |post| %>
     <p>Title: <%= post.title %></p>
     <p>Body: <%= post.body %></p>
-    <p>Created at: <%= post.created_at %> - Updated at: <%= post.updated_at %></p>
     <hr>
     <p>Comments: </p>
     <section id="comment-<%=post.id%>">
       <% post.comments.each do |comment| %>
         <p>Author: <%= comment.author(comment.user_id) %></p>
         <p>Body: <%= comment.body %></p>
-        <p>Created at: <%= comment.created_at %> - Updated at: <%= comment.updated_at %></p><hr><hr>
+        <hr><hr>
     <% end %>
+    <%= link_to "Comment", "posts/#{post.id}/comments/new", params: {user_id: session[:user_id]} %>
   </section>
   <% end %>
 <% end %>
