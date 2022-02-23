@@ -24,7 +24,8 @@
         <p>Body: <%= comment.body %></p>
         <hr><hr>
     <% end %>
-    <%= link_to "Comment", "/posts/#{post.id}/comments/new", params: {user_id: session[:user_id]} %>
+    <%= button_to "Comment", "/posts/#{post.id}/comments/new", method: :get, params: {user_id: session[:user_id]} %>
   </section>
   <% end %>
+  <%= button_to "Create a New Post", "/posts/new", method: :get, params: {user_id: session[:user_id]} %>
 <% end %>
