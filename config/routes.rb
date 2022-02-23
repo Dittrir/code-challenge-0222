@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login_user'
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
+  get '/posts/:id/comments/new', to: 'comments#new'
+  post '/posts/:id/comments', to: 'comments#create'
 end
