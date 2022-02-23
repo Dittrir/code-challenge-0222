@@ -9,13 +9,14 @@
   <%= link_to "My Dashboard", dashboard_path %>
 
   <h1>Here are the posts!</h1>
+  <%= button_to "Create a New Post", "/posts/new", method: :get, params: {user_id: session[:user_id]} %>
   <hr><hr>
   <% @posts.order_by_most_recent.each do |post| %>
     <section id="post-<%= post.id %>">
+      <%= link_to "Post #: #{post.id}", "/posts/#{post.id}" %>
       <% if post.user_id == session[:user_id] %>
         <%= button_to "Delete This Post", "/posts/#{post.id}", method: :delete %>
       <% end %>
-      <%= link_to "Post #: #{post.id}", "/posts/#{post.id}" %>
       <p>Author: <%= post.author(post.user_id) %></p>
       <p>Title: <%= post.title %></p>
       <p>Body: <%= post.body %></p>
@@ -30,5 +31,4 @@
     <hr><hr>
   </section>
   <% end %>
-  <%= button_to "Create a New Post", "/posts/new", method: :get, params: {user_id: session[:user_id]} %>
 <% end %>
