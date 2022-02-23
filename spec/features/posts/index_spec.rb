@@ -143,5 +143,19 @@ RSpec.describe 'Homepage', type: :feature do
       expect(page).to have_content("Another day at the office!")
       expect(page).to have_content("Who is stoked for the weekend?")
     end
+
+    it 'sad path: doesnt allow user to create a post without ' do
+      visit root_path
+
+      click_button 'Create a New Post'
+
+      fill_in :title, with: 'Another day at the office!'
+      fill_in :body, with: 'Who is stoked for the weekend?'
+      click_button 'Post'
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("Another day at the office!")
+      expect(page).to have_content("Who is stoked for the weekend?")
+    end
   end
 end

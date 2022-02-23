@@ -8,16 +8,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.find(params[:id])
+    @post = Post.new(post_params)
+    @user = User.find(session[:user_id])
   end
 
   def create
-    @post = Post.find(params[:id])
-    binding.pry
-    comment = @post.comments.new(post_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to dashboard_path(@user.id)
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to root_path
     else
       render :new
     end
@@ -25,6 +23,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.permit(:title, :body)
+      params.permit(:title, :body, :user_id)
     end
 end
