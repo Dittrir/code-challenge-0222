@@ -1,0 +1,26 @@
+<% if current_user.nil? %>
+  <%= link_to "Log In", "/login", method: :get %>
+  <%= link_to "Register", "/register", method: :get %>
+  <h1>Welcome to Robin's Ruby on Rails Code Project!</h1>
+  <p>Users can create posts, comment on others' posts, and delete posts.</p>
+  <p>Please Log in or register, by using one of the links above, to get started.</p>
+<% else %>
+  <%= link_to "Logout", "/logout", method: :delete %>
+
+  <h1>Here are the posts!</h1>
+  <hr><hr>
+  <% @posts.each do |post| %>
+    <p>Title: <%= post.title %></p>
+    <p>Body: <%= post.body %></p>
+    <p>Created at: <%= post.created_at %> - Updated at: <%= post.updated_at %></p>
+    <hr>
+    <p>Comments: </p>
+    <section id="comment-<%=post.id%>">
+      <% post.comments.each do |comment| %>
+        <p>Author: <%= comment.author(comment.user_id) %></p>
+        <p>Body: <%= comment.body %></p>
+        <p>Created at: <%= comment.created_at %> - Updated at: <%= comment.updated_at %></p><hr><hr>
+    <% end %>
+  </section>
+  <% end %>
+<% end %>

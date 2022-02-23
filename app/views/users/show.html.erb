@@ -3,15 +3,5 @@
   <%= link_to "Register", "/register", method: :get %>
 <% else %>
   <%= link_to "Logout", "/logout", method: :delete %>
-
   <h1> <%= @user.name %>'s Dashboard</h1>
-
-  <p><%= @user.name %>'s Posts: </p>
-  <% @posts.each do |post| %>
-    <hr>
-    <p>Title: <%= post.title %></p>
-    <p>Body: <%= post.body %></p>
-    <p>Created at: <%= post.created_at %></p>
-    <p>Updated at: <%= post.updated_at %></p>
-  <% end %>
 <% end %>

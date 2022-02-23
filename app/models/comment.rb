@@ -4,4 +4,8 @@ class Comment < ApplicationRecord
 
   validates :body,
             :presence => {message: "can't be blank"}
+
+  def author(id)
+    User.find(id).name
+  end
 end
