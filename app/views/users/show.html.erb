@@ -9,9 +9,9 @@
   <p><%= @user.name %>'s Posts: </p>
   <% @posts.each do |post| %>
     <hr>
-    <p><%= post.title %></p>
-    <p><%= post.body %></p>
-    <p><%= post.created_at %></p>
-    <p><%= post.updated_at %></p>
+    <p>Title: <%= post.title %></p>
+    <p>Body: <%= post.body %></p>
+    <p>Created at: <%= post.created_at %></p>
+    <p>Updated at: <%= post.updated_at %></p>
   <% end %>
 <% end %>

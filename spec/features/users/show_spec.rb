@@ -4,7 +4,7 @@ RSpec.describe 'User Dashboard Page', type: :feature do
   describe 'view' do
     before(:each) do
       @user_1 = User.create!(name: "David", email: "david@email.com", password: 'password123', password_confirmation: 'password123')
-
+      @user_2 = User.create!(name: "Pamala", email: "Pamela@email.com", password: 'password123', password_confirmation: 'password123')
       visit login_path
 
       fill_in(:email, with: 'david@email.com')
@@ -39,7 +39,7 @@ RSpec.describe 'User Dashboard Page', type: :feature do
 
     it 'includes comments for each post' do
       post = create(:post, user_id: @user_1.id, title: "Test Post")
-      comment = create(:comment, post_id: @post.id, body: "Test Comment")
+      comment = create(:comment, post_id: @post.id, user_id: @user_2.id, body: "Test Comment")
       visit dashboard_path
 
       expect(page).to have_content("Test Comment")
