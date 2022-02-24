@@ -1,5 +1,16 @@
 <h1>Create a New Comment</h1>
 
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved: </p>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <%= form_with url: "/posts/#{@post.id}/comments", method: :post, local:true do |form| %>
   <%= form.label :body, "Comment Body:" %>
   <p><%= form.text_field :body %></p>
