@@ -49,7 +49,7 @@ $ rails db:{drop,create,migrate,seed}
 - Rails 5.2.6
 
 
-# Gems
+## Gems
 - `gem 'pry'`
 - `gem 'jsonapi-serializer'`
 - `gem 'rspec-rails'`
