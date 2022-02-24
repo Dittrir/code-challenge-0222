@@ -87,13 +87,12 @@ RSpec.describe 'Homepage', type: :feature do
       expect(page).to have_content("Email or password is incorrect. Please try again.")
     end
 
-    it 'includes posts' do
+    it 'includes posts and their info' do
       post = create(:post, user_id: @user_1.id, title: "Test Post")
       visit root_path
 
       within("#post-#{post.id}") do
-        expect(page).to have_content("Author: David")
-        expect(page).to have_content("Title: Test Post")
+        expect(page).to have_content("David: Test Post")
         expect(page).to have_content("Body: #{post.body}")
       end
     end

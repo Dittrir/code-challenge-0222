@@ -17,8 +17,7 @@
       <% if post.user_id == session[:user_id] %>
         <%= button_to "Delete This Post", "/posts/#{post.id}", method: :delete %>
       <% end %>
-      <p>Author: <%= post.author(post.user_id) %></p>
-      <p>Title: <%= post.title %></p>
+      <p><%= post.author(post.user_id) %>: <strong><%= post.title %></strong></p>
       <p>Body: <%= post.body %></p>
       <hr>
     </section>
